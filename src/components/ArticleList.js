@@ -4,21 +4,18 @@ import Article from './Article'
 
 const ArticleList = props => {
     const {articles} = props
-
-    console.log("Article list props: ", props)
-
+ 
     const articleElements = articles.map(article => {
-        const Terr = ButtonToggle(<Article article={article} />)
-        return
+        return (
             <li key={article.id}>
-                <Terr />
+                <Article article={article} />
             </li>
-        }
-    )
+        )
+    })
 
     return (
         <ul>
-            {articleElements} 
+            {articleElements}
         </ul>
     )
 }

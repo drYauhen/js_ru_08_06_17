@@ -1,32 +1,31 @@
 import React, {Component} from 'react'
 
-
-const ButtonToggle = (wrappedComponent) => {
-    console.log('buttonToggle this.props.component', wrappedComponent)
-        // console.log("---------------------"),
-
+const buttonToggle = (wrappedComponent) => {
     return class ToggleWrapper extends Component {
         state = {
             isOpen: false
         }
 
         render() {
+            const {isOpen} = this.state
             return(
                 <section>
-                    <button onClick={this.toggleVisbility()}>
-                        {this.state.isOpen ? 'close' : 'open'}
-                    </button>
-                    {wrappedComponent}
+                    <p>
+                        <button onClick={this.toggleVisbility}>
+                            {isOpen ? 'close' : 'open'}
+                        </button>
+                    </p>
+                    {isOpen ?  wrappedComponent : null}
                 </section>
             )
         }
 
-        toggleVisbility = () => () => {
+        toggleVisbility = () => {
             this.setState({
-                isOpen: !isOpen
+                isOpen: !this.state.isOpen
             })
         }
     }
 }
 
-export default ButtonToggle
+export default buttonToggle

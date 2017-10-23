@@ -1,29 +1,19 @@
 import React, {Component} from 'react'
 import ArticleComments from './ArticleComments'
+import {render} from 'react-dom'
 import buttonToggle from '../decorators/buttonToggle'
 
 class Article extends Component {
-    constructor(props) {
-        super(props)
-
-        this.state = {
-            isOpen: true
-        }
-    }
 
     render() {
-        console.log('props from Article component: ', this.props)
         const {article} = this.props
-        console.log('Article from Article component: ', article)
-        const {isOpen} = this.state
+        // const {isOpen} = this.state
+        const BodyText = buttonToggle(this.getBody())
 
         return (
             <div>
                 <h3>{article.title}</h3>
-                <button onClick = {this.toggleOpen}>
-                    {isOpen ? 'close' : 'open'}
-                </button>
-                {this.getBody()}
+                <BodyText />
             </div>
         )
     }
@@ -35,7 +25,6 @@ class Article extends Component {
     }
 
     getBody() {
-        if (!this.state.isOpen) return null
         const {article} = this.props
         return (
             <section>
@@ -44,12 +33,6 @@ class Article extends Component {
             </section>
         )
     }
-
-    toggleOpen = () => {
-        this.setState({
-            isOpen: !this.state.isOpen
-        })
-    }
 }
 
-export default
+export default Article
