@@ -8,6 +8,7 @@ const buttonToggle = (wrappedComponent) => {
 
         render() {
             const {isOpen} = this.state
+            console.log('wrapped component: ', wrappedComponent)
             return(
                 <section>
                     <p>
@@ -15,6 +16,7 @@ const buttonToggle = (wrappedComponent) => {
                             {isOpen ? 'close' : 'open'}
                         </button>
                     </p>
+                    <wrappedComponent />
                     {isOpen ?  wrappedComponent : null}
                 </section>
             )

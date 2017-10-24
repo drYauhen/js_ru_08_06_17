@@ -18,18 +18,12 @@ class Article extends Component {
         )
     }
 
-    articleComments(articleComment) {
-        return (
-            articleComment ? <ArticleComments comments={articleComment} /> : <p>--- no comments yet ---</p>
-        )
-    }
-
     getBody() {
         const {article} = this.props
         return (
             <section>
                 {article.text}
-                {this.articleComments(article.comments)}
+                <ArticleComments comments={article.comments} />
             </section>
         )
     }
